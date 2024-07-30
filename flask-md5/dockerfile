@@ -1,0 +1,20 @@
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the python app into the container at /app
+COPY app.py /app
+
+# Install Flask
+RUN pip install Flask
+
+# Create the uploads directory
+RUN mkdir /uploads
+
+# Expose port 8080
+EXPOSE 8080
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
