@@ -130,11 +130,11 @@ In general, it's better to use the deploy script once you have made any changes.
 ### From the command line using CURL
 1. **Open your terminal and enter:**
     ```bash
-    curl -sF "file=@<path_to_file>" http://<IP address or hostname>:80/upload | grep -G -o '<h2[^>]*>.*</h2>'
+    curl -sF "file=@<path_to_file>" http://<IP address or hostname>:80/upload | grep -oP '(?<=<h2>).*(?=</h2>)'
     ```
     example:
     ```bash
-    curl -sF "file=@./app.py" http://localhost:80/upload | grep -G -o '<h2[^>]*>.*</h2>'
+    curl -sF "file=@./app.py" http://localhost:80/upload | grep -oP '(?<=<h2>).*(?=</h2>)'
 
     File: app.py
     MD5 Hash: bfa9181a927eebf31962aa92dd901b56
